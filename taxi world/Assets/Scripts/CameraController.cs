@@ -11,6 +11,13 @@ public class CameraController : MonoBehaviour, IBeginDragHandler, IEndDragHandle
 
     #endregion
 
+
+    #region Public Vars
+    public float Sensivity { get { return _sensivity;} /*set { _sensivity = value; }*/  } //just for you guys ;)
+
+    #endregion
+
+
     #region Private Vars
     Vector2 _StartMovePos, _CurrentTouchPos, _LastMovePosition;
     bool _isCamMoving = false;
@@ -37,7 +44,6 @@ public class CameraController : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         _isCamMoving = false;
     }
     #endregion
-
 
 
     #region Unity Methods
