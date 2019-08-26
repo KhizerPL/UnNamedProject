@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playeController : MonoBehaviour
+public class playerController : MonoBehaviour
 {
    public float speed;
    public float sensitivity;
-    Rigidbody rb;
+    public bool movementAndLookEnabled;
+    public bool mouseVisibleAndUnlocked;
+   Rigidbody rb;
 
     float rotX = 0F;
     float rotY = 0f;
 
 
     private void Start()
-    {
-       
+    {   
         rb = GetComponent<Rigidbody>();
     }
 
@@ -40,8 +41,24 @@ public class playeController : MonoBehaviour
     }
     void Update()
     {
-        movement();
-        mouseLook();
+        if(mouseVisibleAndUnlocked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        if (movementAndLookEnabled)
+        {
+            movement();
+            mouseLook();
+        }
+
 
 
     }
