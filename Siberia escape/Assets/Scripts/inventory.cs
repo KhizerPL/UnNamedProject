@@ -38,14 +38,6 @@ public class inventory : MonoBehaviour
             inventoryPanel.SetActive(false);
 
         }
-          
-
-
-
-
-
-        
-
     }
 
     void Update()
@@ -54,7 +46,6 @@ public class inventory : MonoBehaviour
         {
             ToggleInventoryVisibility();
         }
-
 
 
     }
