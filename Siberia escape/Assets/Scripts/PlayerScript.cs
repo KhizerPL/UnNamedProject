@@ -4,34 +4,22 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    #region StaticVars
-    public static PlayerScript THIS;
+
+    #region publicVariables
+
+    [Header("Player Basic Statistics: ")]
+    public int currentHealth;
+    public int maxHealth;
+    public int hydration;
+    public int hunger;
+    public int cash;
 
     #endregion
 
-    #region InspectorVars
-    [Header("Player Basic Settings: ")]
-    [SerializeField] float _CurrentHealth;
-    [SerializeField] float _MaxHealth;
 
 
-    #endregion
-
-    #region PublicVars
-    public float CurrentHealth{ get { return _CurrentHealth; } }
-    public string HealthString{ get { return _CurrentHealth + " / " + _MaxHealth; } }
 
 
-    #endregion
-
-    #region UnityMethods
-
-    private void Awake()
-    {
-        THIS = this;
-    }
-
-    #endregion
 
 
 }

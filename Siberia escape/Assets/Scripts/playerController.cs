@@ -17,7 +17,6 @@ public class playerController : MonoBehaviour
     private void Start()
     {   
         rb = GetComponent<Rigidbody>();
-        Debug.Log("Current health of player is " + PlayerScript.THIS.CurrentHealth + " or in others " + PlayerScript.THIS.HealthString);
     }
 
 
