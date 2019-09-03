@@ -50,6 +50,31 @@ public class inventory : MonoBehaviour
             pC.mouseVisibleAndUnlocked = false;
         }
     }
+    GameObject returnFreeSlot()
+    {
+        for(int i = 0; i < slots.Length;)
+        {
+            if(slots[i].GetComponent<slot>().empty) //if empty
+            {
+                return slots[i];
+            }
+            else
+            {             
+                i++;
+            }
+        }
+        return null;    
+    }
+
+    void addItem(Transform item)
+    {
+        GameObject freeSlot = returnFreeSlot();
+        freeSlot.GetComponent<slot>().id = item.GetComponent<item>().id;
+        freeSlot.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<item>().icon;
+        freeSlot.GetComponent<slot>().empty = false;
+
+    }
+
 
     void raycast()
     {
@@ -57,11 +82,17 @@ public class inventory : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.transform.name);
+       
 
-            if(hit.transform.GetComponent<item>())
+            if(hit.transform.GetComponent<item>() && Vector3.Distance(this.transform.position, hit.transform.position) < 15)
             {
                 itemNameOverlay.text = hit.transform.GetComponent<item>().nameOfItem;
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    addItem(hit.transform);
+                    Destroy(hit.transform.gameObject);
+                }
+
             }
             else
             {
