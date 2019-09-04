@@ -32,6 +32,7 @@ public class inventory : MonoBehaviour
     private void Start()
     {
         assignSlots();
+        inventoryPanel.SetActive(false);
     }
 
 
@@ -68,10 +69,12 @@ public class inventory : MonoBehaviour
 
     void addItem(Transform item)
     {
-        GameObject freeSlot = returnFreeSlot();
-        freeSlot.GetComponent<slot>().id = item.GetComponent<item>().id;
-        freeSlot.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<item>().icon;
-        freeSlot.GetComponent<slot>().empty = false;
+        if(returnFreeSlot() != null)
+        {
+            returnFreeSlot().GetComponent<slot>().addItemToSlot(item.GetComponent<item>().icon, item.GetComponent<item>().id);
+            Destroy(item.gameObject);
+        }
+       
 
     }
 
@@ -89,8 +92,7 @@ public class inventory : MonoBehaviour
                 itemNameOverlay.text = hit.transform.GetComponent<item>().nameOfItem;
                 if(Input.GetKeyDown(KeyCode.E))
                 {
-                    addItem(hit.transform);
-                    Destroy(hit.transform.gameObject);
+                    addItem(hit.transform);             
                 }
 
             }
