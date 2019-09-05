@@ -25,9 +25,9 @@ public class playerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
-<<<<<<< Updated upstream
+
         transform.position += Camera.main.transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * Time.deltaTime * speed;
-=======
+
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
 
         moveDirection = transform.TransformDirection(moveDirection);
@@ -39,7 +39,7 @@ public class playerController : MonoBehaviour
         
 
 
->>>>>>> Stashed changes
+
 
        
 
@@ -51,13 +51,13 @@ public class playerController : MonoBehaviour
         rotX += Input.GetAxis("Mouse X") * sensitivity;
         rotY += Input.GetAxis("Mouse Y") * sensitivity;
         rotY = Mathf.Clamp(rotY, -80, 80);
-<<<<<<< Updated upstream
-        Camera.main.transform.localEulerAngles = new Vector3(-rotY, rotX,0);
-=======
+
+      
+
         Camera.main.transform.eulerAngles = new Vector3(-rotY, rotX,0);
        
         
->>>>>>> Stashed changes
+
     }
     void Update()
     {
