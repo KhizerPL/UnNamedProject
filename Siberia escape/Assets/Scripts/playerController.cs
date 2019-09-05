@@ -25,11 +25,16 @@ public class playerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
-        transform.position += Camera.main.transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * Time.deltaTime * speed;
+        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
 
-       
+        transform.Translate(moveDirection * Time.deltaTime * speed, Space.Self);
 
-      
+
+        
+
+
+
+
     }
 
     void mouseLook()
@@ -37,7 +42,9 @@ public class playerController : MonoBehaviour
         rotX += Input.GetAxis("Mouse X") * sensitivity;
         rotY += Input.GetAxis("Mouse Y") * sensitivity;
         rotY = Mathf.Clamp(rotY, -80, 80);
-        Camera.main.transform.localEulerAngles = new Vector3(-rotY, rotX,0);
+        Camera.main.transform.eulerAngles = new Vector3(-rotY, rotX,0);
+        transform.eulerAngles = new Vector3(0, rotX, 0);
+        
     }
     void Update()
     {

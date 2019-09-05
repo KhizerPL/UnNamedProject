@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+
         if(Input.GetKeyDown(KeyCode.X))
         {
             Instantiate(itemPrefab, new Vector3(transform.position.x, transform.position.y + 15, transform.position.z), Quaternion.identity);
