@@ -11,6 +11,7 @@ public class inventory : MonoBehaviour
     [SerializeField] Transform slotsHandler;
     [SerializeField] playerController pC;
     [SerializeField] Text itemNameOverlay;
+    [SerializeField] GameObject inventoryPopOut;
 
     #region privateVariables
 
@@ -66,15 +67,35 @@ public class inventory : MonoBehaviour
         }
         return null;    
     }
+    void popOutNotEnoughSpace()
+    {
+
+        inventoryPopOut.GetComponent<Animator>().SetTrigger("popOut");
+        inventoryPopOut.GetComponent<Text>().color = new Color(1, 0, 0, 1);
+        inventoryPopOut.GetComponent<Text>().text = "Not enough space";
+
+    }
+    void popOutItemAdded()
+    {
+        inventoryPopOut.GetComponent<Animator>().SetTrigger("popOut");
+        inventoryPopOut.GetComponent<Text>().color = new Color(0, 1, 0, 1);
+        inventoryPopOut.GetComponent<Text>().text = "Item Added";
+
+    }
+
 
     void addItem(Transform item)
     {
         if(returnFreeSlot() != null)
         {
             returnFreeSlot().GetComponent<slot>().addItemToSlot(item.GetComponent<item>().icon, item.GetComponent<item>().id);
+            popOutItemAdded();
             Destroy(item.gameObject);
         }
-       
+        else
+        {
+            popOutNotEnoughSpace();
+        }
 
     }
 

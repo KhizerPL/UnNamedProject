@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 1.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 83d44cc7a43034adeaf351b6a4cbc34d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.41153732, g: 0.43637422, b: 0.44620365, a: 1}
+  m_IndirectSpecularColor: {r: 0.10183286, g: 0.10865217, b: 0.10859055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2611,7 +2611,6 @@ MonoBehaviour:
   slotsHandler: {fileID: 736083442}
   pC: {fileID: 771416014}
   itemNameOverlay: {fileID: 2084644815}
-  inventoryPopOut: {fileID: 350220969}
 --- !u!1 &813004025
 GameObject:
   m_ObjectHideFlags: 0
@@ -4782,7 +4781,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.1754944e-38, y: 0, z: 0, w: 2.407486e-35}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4793,13 +4792,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557775113}
-  m_LocalRotation: {x: -0.96330464, y: 0.20434679, z: 0.15883967, w: -0.07110971}
+  m_LocalRotation: {x: -0.7324345, y: 0.6542054, z: 0.05995245, w: -0.17877588}
   m_LocalPosition: {x: 0, y: 162.1, z: 19.300003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 4.1340003, y: -160.369, z: 204.66899}
+  m_LocalEulerAnglesHint: {x: 10.570001, y: -160.89601, z: 265.326}
 --- !u!1 &1563962898
 GameObject:
   m_ObjectHideFlags: 0

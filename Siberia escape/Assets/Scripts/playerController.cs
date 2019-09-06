@@ -26,14 +26,15 @@ public class playerController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
 
 
-        transform.position += Camera.main.transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * Time.deltaTime * speed;
+      
 
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
 
-        moveDirection = transform.TransformDirection(moveDirection);
+        moveDirection = transform.TransformDirection(moveDirection);      
         moveDirection = Camera.main.transform.TransformDirection(moveDirection);
 
-        transform.Translate(moveDirection * Time.deltaTime * speed, Space.Self);
+        moveDirection.y = 0;
+        transform.localPosition += (moveDirection * Time.deltaTime * speed);
 
 
         
