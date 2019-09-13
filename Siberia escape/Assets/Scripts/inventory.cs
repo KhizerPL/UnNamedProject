@@ -16,7 +16,7 @@ public class inventory : MonoBehaviour
     #region privateVariables
 
     bool isInventoryOpen;
-    GameObject[] slots;
+    public GameObject[] slots;
 
     #endregion
 
