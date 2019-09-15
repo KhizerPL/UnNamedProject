@@ -5,7 +5,9 @@ using UnityEngine;
 public class item : MonoBehaviour
 {
 
+
     public string nameOfItem;
+    public string type;
     public string description;
     public int id;
     public Sprite icon;
