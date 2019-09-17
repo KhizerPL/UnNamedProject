@@ -106,9 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfItem: Apple
-  type: normal
   description: 
-  id: 1
+  id: 2
   icon: {fileID: 21300000, guid: d140aeeee27dcb64fbc786d82191e65b, type: 3}
 --- !u!54 &4043155831821001041
 Rigidbody:

@@ -12,8 +12,4 @@ public class itemsManager : MonoBehaviour
         Instantiate(itemsPrefabs[id], position, rotation);
     }
 
-
-
-   
-
 }

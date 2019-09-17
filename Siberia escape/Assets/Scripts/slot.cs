@@ -5,32 +5,19 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IEndDragHandler
-{
-    #region privateVariables
-  
-    bool draggingItem;
+{ 
+
+    public int itemId;
+    public bool empty = true;
+    public GameObject picOfItemHandler;
     inventory inv;
     Sprite itemIcon;
-    GameObject picOfItemHandler;
-    GameObject player;
-    #endregion
-
-    #region editorVariables
-
     [SerializeField] inventoryMouseDetect invmd;
     [SerializeField] itemsManager iM;
-
-    #endregion
-
-    #region publicVariables
-
-    public bool empty = true;
     public bool mouseOver;
-    public string slotType;
-    public int itemId;
-    public string itemType;
-
-    #endregion
+    bool draggingItem;
+    GameObject player;
+    
 
     private void Awake()
     {
@@ -39,14 +26,13 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
         inv = player.GetComponent<inventory>();
     }
 
-    public void addItemToSlot(Sprite _itemIcon, int id, string type)
+    public void addItemToSlot(Sprite _itemIcon, int id)
     {
         picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
         itemIcon = _itemIcon;
         picOfItemHandler.GetComponent<Image>().sprite = itemIcon;
         picOfItemHandler.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         itemId = id;
-        itemType = type;
         empty = false;
     }
 
@@ -55,7 +41,6 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
         empty = true;
         itemId = 0;
         itemIcon = null;
-        itemType = null;
         picOfItemHandler.GetComponent<Image>().sprite = null;
         picOfItemHandler.GetComponent<Image>().color = new Color(1, 1, 1, 0);
 
@@ -75,8 +60,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
     {
       if(!empty)
       {
-         draggingItem = true;
-         picOfItemHandler.transform.SetParent(transform.parent);
+            draggingItem = true;
          picOfItemHandler.transform.position = Input.mousePosition;
         
       }
@@ -86,7 +70,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
     }
     void itemTransaction(GameObject slot)
     {     
-        slot.GetComponent<slot>().addItemToSlot(itemIcon, itemId,itemType);
+        slot.GetComponent<slot>().addItemToSlot(itemIcon, itemId);
        
         clearSlot();
 
@@ -96,44 +80,25 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
 
 
     public void OnEndDrag(PointerEventData eventData)
-    {       
+    {
+        //if outside  of inventory == drop
         if (draggingItem)
         {
-            picOfItemHandler.transform.SetParent(transform);
             for (int i = 0; i < inv.slots.Length;)
             {
                 if (inv.slots[i].GetComponent<slot>().mouseOver && inv.slots[i].GetComponent<slot>().empty)
-                {                 
-                        if(inv.slots[i].GetComponent<slot>().slotType != "normal")
-                        {
-                            if(itemType == inv.slots[i].GetComponent<slot>().slotType)
-                            {
-                                itemTransaction(inv.slots[i]);
-                              
-                                draggingItem = false;
-                                return;
-                            }
-                            else
-                            {
-                                picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
-                            
-                                draggingItem = false;
-                                return;
-                             }
-                        }
-                        else
-                        {
-                            itemTransaction(inv.slots[i]);                        
-                            draggingItem = false;
-                            return;
+                {
 
-                        }                        
+                    itemTransaction(inv.slots[i]);
+                    draggingItem = false;
+                    return;
                 }
                 else
                 {
                     i++;
                 }
-          
+           
+
             }
             if(!invmd.mouseOver)
             {
@@ -143,9 +108,13 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
             {
                 picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
                 draggingItem = false;
-          
-            }     
+            }
+        
+
         }
+
+
+
     }
 
     public void OnPointerEnter(PointerEventData eventdata)
