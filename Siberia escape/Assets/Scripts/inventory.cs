@@ -88,7 +88,7 @@ public class inventory : MonoBehaviour
     {
         if(returnFreeSlot() != null)
         {
-            returnFreeSlot().GetComponent<slot>().addItemToSlot(item.GetComponent<item>().icon, item.GetComponent<item>().id);
+            returnFreeSlot().GetComponent<slot>().addItemToSlot(item.GetComponent<item>().icon, item.GetComponent<item>().id, item.GetComponent<item>().type);
             popOutItemAdded();
             Destroy(item.gameObject);
         }
