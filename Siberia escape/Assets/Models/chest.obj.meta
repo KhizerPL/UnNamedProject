@@ -3,7 +3,257 @@ guid: fd4db0207cc781a45a46467a99b9b2bc
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046000Mat
+    second: {fileID: 2100000, guid: 99985e2b054f4b9448fd4128c443fa07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046001Mat
+    second: {fileID: 2100000, guid: fcd937ca2d25f0241a6df8dcbf2f50d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046002Mat
+    second: {fileID: 2100000, guid: b72215bfcd21ecf44b20da0545d8fa86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046003Mat
+    second: {fileID: 2100000, guid: befcf516bfaabbf488774349f4ff726f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046004Mat
+    second: {fileID: 2100000, guid: 0777eef3bfcbc71408c4e567cd60acda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046005Mat
+    second: {fileID: 2100000, guid: 30ea6f2b12d818944a57fdbaf76587f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046006Mat
+    second: {fileID: 2100000, guid: b7d8ac92656b9ae48a5a16e9c0795c11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046007Mat
+    second: {fileID: 2100000, guid: feb62d22a4548354283ca3cda0fc14ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046008Mat
+    second: {fileID: 2100000, guid: eea9b233cc5424648941ba9c982a4b9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046009Mat
+    second: {fileID: 2100000, guid: 31b34ca5a05520a4c982b7f2cbff9bc4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046010Mat
+    second: {fileID: 2100000, guid: 7c3cc646f5eddb3418a197ddf7597f79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046011Mat
+    second: {fileID: 2100000, guid: cafc33c9d3f8ad84f85af53c7ba71d68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046012Mat
+    second: {fileID: 2100000, guid: 5c17d5b7dad838741bae043921695aed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046013Mat
+    second: {fileID: 2100000, guid: f029869d111ec8e4aac7b25413873ae0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046014Mat
+    second: {fileID: 2100000, guid: 4314069349d020a4aa76dc6d7451e55d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046015Mat
+    second: {fileID: 2100000, guid: a7cb9c51d9bc7dc4fa30f2cc29e9e891, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046016Mat
+    second: {fileID: 2100000, guid: 79f989c3e925b1745bdc7718d355871c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046017Mat
+    second: {fileID: 2100000, guid: 72b2eaf6637894640be5d11c78d9c384, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046018Mat
+    second: {fileID: 2100000, guid: 4103e77f24bcaf440bc4c1fff2eb00eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046019Mat
+    second: {fileID: 2100000, guid: 577f6c929d017dc4ea6751920dd510f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046020Mat
+    second: {fileID: 2100000, guid: ffdb8d3744e0b84419a9d296207fc01c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046021Mat
+    second: {fileID: 2100000, guid: df6d84f99c490bf41bf12d2b4ab708f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046022Mat
+    second: {fileID: 2100000, guid: 6baf832b0ac179b43990c740d1c0c454, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046023Mat
+    second: {fileID: 2100000, guid: 4434bea583cfd5b4484372db713fb1e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeFBXASC046024Mat
+    second: {fileID: 2100000, guid: f6341f0b32536d346b32c8c759e8ce64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CubeMat
+    second: {fileID: 2100000, guid: c2f0da8be6bf65e4bb30594214b0522d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CylinderFBXASC046000Mat
+    second: {fileID: 2100000, guid: 249d25e09eb80a94c86b0703688f73a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CylinderFBXASC046001Mat
+    second: {fileID: 2100000, guid: b8e39a2465bd1874388976ccf172dd3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CylinderMat
+    second: {fileID: 2100000, guid: 2fa8ccdf114f61e48ab1e20787135f23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlaneMat
+    second: {fileID: 2100000, guid: eed92a10a690baf47b78a4b98a52ebcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046001Mat
+    second: {fileID: 2100000, guid: 4413453cf4b79154ba5ff9eda8b8a682, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046002Mat
+    second: {fileID: 2100000, guid: cbbe8fbf8d414de4f909098f2b2ef2ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046003Mat
+    second: {fileID: 2100000, guid: c3773adbc5e830e4caaefbee133cb662, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046004Mat
+    second: {fileID: 2100000, guid: a19bca56bb5201e46969b5e583f5cfea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046005Mat
+    second: {fileID: 2100000, guid: 57881132e5156a94dac2e6b1e0377c4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046006Mat
+    second: {fileID: 2100000, guid: e4f411421aac8374887124538aa51076, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046007Mat
+    second: {fileID: 2100000, guid: 94c7af884d0cb0f45a2c54c3706c699a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046008Mat
+    second: {fileID: 2100000, guid: 11df04ae7ecb6fc4e80e2fb93fed9a11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046009Mat
+    second: {fileID: 2100000, guid: 4bc269a0d9f854442b979fc5b516bfd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046010Mat
+    second: {fileID: 2100000, guid: e320b4bdb2cde2b428c691f1eda43a8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046011Mat
+    second: {fileID: 2100000, guid: d9ad8c6b52cd9ad4e82b30ed2ef2c52d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046012Mat
+    second: {fileID: 2100000, guid: 24612d5c12d08ce4eb59f53cf040d9de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046013Mat
+    second: {fileID: 2100000, guid: f1c0dc2af7686694195b8fa7f72d301c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046014Mat
+    second: {fileID: 2100000, guid: 1a4136d11b2a0a2499644780318016d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046015Mat
+    second: {fileID: 2100000, guid: 3803eb7ad2c4a19448fbc6e25859ede6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046016Mat
+    second: {fileID: 2100000, guid: a1706099a3483074d81411273d4b0426, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046017Mat
+    second: {fileID: 2100000, guid: c84cdd03735760149b071076a5a49dcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046018Mat
+    second: {fileID: 2100000, guid: ab04b7ae6dcbb5e488eb39c7d449bb6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereFBXASC046019Mat
+    second: {fileID: 2100000, guid: 532161871fbfa3d4881132e9aa93e19d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereMat
+    second: {fileID: 2100000, guid: 305ac5e6ebd8af94eac90e7854ec1441, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

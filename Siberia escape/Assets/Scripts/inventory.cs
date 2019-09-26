@@ -12,6 +12,8 @@ public class inventory : MonoBehaviour
     [SerializeField] playerController pC;
     [SerializeField] Text itemNameOverlay;
     [SerializeField] GameObject inventoryPopOut;
+    [SerializeField] chestInteraction cI;
+
 
     #region privateVariables
 
@@ -116,11 +118,24 @@ public class inventory : MonoBehaviour
                     addItem(hit.transform);             
                 }
 
+            }       
+            else if (hit.transform.GetComponent<chest>() && Vector3.Distance(this.transform.position, hit.transform.position) < 15)
+            {
+                itemNameOverlay.text = hit.transform.GetComponent<chest>().nameOfChest;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                      cI.open(hit.transform.GetComponent<chest>());
+                }
+
             }
             else
             {
                 itemNameOverlay.text = "";
             }
+
+
+
+
 
         }
 
