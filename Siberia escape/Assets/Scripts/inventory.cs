@@ -141,7 +141,7 @@ public class inventory : MonoBehaviour
 
 
     }
-
+   
 
     void Update()
     {

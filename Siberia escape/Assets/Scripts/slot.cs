@@ -10,8 +10,8 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
   
     bool draggingItem;
     inventory inv;
-    Sprite itemIcon;
-    GameObject picOfItemHandler;
+  
+    public GameObject picOfItemHandler;
     GameObject player;
     #endregion
 
@@ -23,7 +23,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
     #endregion
 
     #region publicVariables
-
+    public Sprite itemIcon;
     public bool empty = true;
     public bool mouseOver;
     public string slotType;
