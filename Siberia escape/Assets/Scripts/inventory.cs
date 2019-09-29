@@ -8,27 +8,39 @@ public class inventory : MonoBehaviour
          
 
     [SerializeField] GameObject inventoryPanel;
-    [SerializeField] Transform slotsHandler;
+    [SerializeField] Transform playerSlotsHandler;
+    [SerializeField] Transform hotbarSlotsHandler;
+    [SerializeField] Transform equipableSlotsHandler;
     [SerializeField] playerController pC;
     [SerializeField] Text itemNameOverlay;
     [SerializeField] GameObject inventoryPopOut;
-    [SerializeField] chestInteraction cI;
+    [SerializeField] UiManager UI;
+    public chestInteraction cI;
 
 
     #region privateVariables
 
     bool isInventoryOpen;
-    public GameObject[] slots;
-
+    public GameObject[] playerSlots;
+    public GameObject[] hotBarSlots;
+    public GameObject[] equipableSlots;
     #endregion
 
     void assignSlots()
     {
-        slots = new GameObject[slotsHandler.childCount];
-        for (int i = 0; i < slotsHandler.childCount; i++)
+        playerSlots = new GameObject[playerSlotsHandler.childCount];
+        for (int i = 0; i < playerSlotsHandler.childCount; i++)
         {
-            slots[i] = slotsHandler.GetChild(i).gameObject;
+            playerSlots[i] = playerSlotsHandler.GetChild(i).gameObject;
         }
+        equipableSlots = new GameObject[equipableSlotsHandler.childCount];
+        for (int i = 0; i < equipableSlotsHandler.childCount; i++)
+        {
+            equipableSlots[i] = equipableSlotsHandler.GetChild(i).gameObject;
+        }
+
+
+
     }
 
 
@@ -44,11 +56,13 @@ public class inventory : MonoBehaviour
         isInventoryOpen = !isInventoryOpen;
 
         if (isInventoryOpen) {
+            UI.screen = UiManager.onScreen.inventory;
             inventoryPanel.SetActive(true);
             pC.movementAndLookEnabled = false;
             pC.mouseVisibleAndUnlocked = true;
         }
         else {
+            UI.screen = UiManager.onScreen.nothing;
             inventoryPanel.SetActive(false);
             pC.movementAndLookEnabled = true;
             pC.mouseVisibleAndUnlocked = false;
@@ -56,11 +70,11 @@ public class inventory : MonoBehaviour
     }
     GameObject returnFreeSlot()
     {
-        for(int i = 0; i < slots.Length;)
+        for(int i = 0; i < playerSlots.Length;)
         {
-            if(slots[i].GetComponent<slot>().empty) //if empty
+            if(playerSlots[i].GetComponent<slot>().empty) //if empty
             {
-                return slots[i];
+                return playerSlots[i];
             }
             else
             {             
@@ -124,7 +138,10 @@ public class inventory : MonoBehaviour
                 itemNameOverlay.text = hit.transform.GetComponent<chest>().nameOfChest;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                      cI.open(hit.transform.GetComponent<chest>());
+                    if (UI.screen == UiManager.onScreen.nothing)
+                    {
+                        cI.open(hit.transform.GetComponent<chest>());
+                    }
                 }
 
             }
@@ -149,7 +166,15 @@ public class inventory : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            ToggleInventoryVisibility();
+            if (UI.screen == UiManager.onScreen.inventory)
+            {
+                ToggleInventoryVisibility();
+            }
+            else if(UI.screen == UiManager.onScreen.nothing)
+            {
+                ToggleInventoryVisibility();
+            }
+
         }
 
 

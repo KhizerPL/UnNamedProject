@@ -23,12 +23,17 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
     #endregion
 
     #region publicVariables
+    [Header("ItemVariables")]
     public Sprite itemIcon;
+    public int itemId;
+    public string itemType;
+
+    [Header("SlotVariables")]
+    public string slotEnviroment;
     public bool empty = true;
     public bool mouseOver;
     public string slotType;
-    public int itemId;
-    public string itemType;
+    
 
     #endregion
 
@@ -55,7 +60,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
         empty = true;
         itemId = 0;
         itemIcon = null;
-        itemType = null;
+        itemType = "";
         picOfItemHandler.GetComponent<Image>().sprite = null;
         picOfItemHandler.GetComponent<Image>().color = new Color(1, 1, 1, 0);
 
@@ -84,7 +89,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
         
 
     }
-    void itemTransaction(GameObject slot)
+    void itemTransfer(GameObject slot)
     {     
         slot.GetComponent<slot>().addItemToSlot(itemIcon, itemId,itemType);
        
@@ -100,52 +105,97 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
         if (draggingItem)
         {
             picOfItemHandler.transform.SetParent(transform);
-            for (int i = 0; i < inv.slots.Length;)
+            if (slotEnviroment == "inventory")
             {
-                if (inv.slots[i].GetComponent<slot>().mouseOver && inv.slots[i].GetComponent<slot>().empty)
-                {                 
-                        if(inv.slots[i].GetComponent<slot>().slotType != "normal")
+
+
+                for (int i = 0; i < inv.playerSlots.Length;)
+                {
+                    if (inv.playerSlots[i].GetComponent<slot>().mouseOver && inv.playerSlots[i].GetComponent<slot>().empty)
+                    {
+                        itemTransfer(inv.playerSlots[i]);
+                        draggingItem = false;
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+
+                }
+                for (int i = 0; i < inv.equipableSlots.Length;)
+                {
+                    if (inv.equipableSlots[i].GetComponent<slot>().mouseOver && inv.equipableSlots[i].GetComponent<slot>().empty)
+                    {
+                        if (itemType == inv.equipableSlots[i].GetComponent<slot>().slotType)
                         {
-                            if(itemType == inv.slots[i].GetComponent<slot>().slotType)
-                            {
-                                itemTransaction(inv.slots[i]);
-                              
-                                draggingItem = false;
-                                return;
-                            }
-                            else
-                            {
-                                picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
-                            
-                                draggingItem = false;
-                                return;
-                             }
+                            itemTransfer(inv.equipableSlots[i]);
+                            draggingItem = false;
+                            return;
                         }
                         else
                         {
-                            itemTransaction(inv.slots[i]);                        
+                            picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
                             draggingItem = false;
                             return;
+                        }
+                    }
+                    else
+                    {
+                        i++;
+                    }
 
-                        }                        
+                }
+                if (!invmd.mouseOver)
+                {
+                    dropItem();
                 }
                 else
                 {
-                    i++;
+                    picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+                    draggingItem = false;
+
                 }
-          
-            }
-            if(!invmd.mouseOver)
+            }          
+            else if(slotEnviroment == "chest")
             {
-                dropItem();
-            }
-            else
-            {
+                for (int i = 0; i < inv.cI.chestSlots.Length;)
+                {
+                    if (inv.cI.chestSlots[i].GetComponent<slot>().mouseOver && inv.cI.chestSlots[i].GetComponent<slot>().empty)
+                    {
+                        itemTransfer(inv.cI.chestSlots[i]);
+                        draggingItem = false;
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+
+                }
+                for(int i = 0; i < inv.cI.playerSlots.Length;)
+                {
+                    if (inv.cI.playerSlots[i].GetComponent<slot>().mouseOver && inv.cI.playerSlots[i].GetComponent<slot>().empty)
+                    {
+                        itemTransfer(inv.cI.playerSlots[i]);
+                        draggingItem = false;
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                  
+                }
                 picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
                 draggingItem = false;
-          
-            }     
+
+
+            }
+
+
         }
+
     }
 
     public void OnPointerEnter(PointerEventData eventdata)
