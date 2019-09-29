@@ -53,7 +53,7 @@ public class chestInteraction : MonoBehaviour
     {
         for (int i = 0; i < actualChest.items.Length;)
         {
-            if (actualChest.items[i].id != 0)         // <==============
+            if (actualChest.items[i].id != 0)        
             {
                 chestSlots[i].GetComponent<slot>().addItemToSlot(actualChest.items[i].icon, actualChest.items[i].id, actualChest.items[i].type);
                 Debug.Log(i);
@@ -78,8 +78,8 @@ public class chestInteraction : MonoBehaviour
         if (showedUp)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-            {           
-                close();
+            {
+                StartCoroutine(closeChest());
             }
 
         }
@@ -128,19 +128,21 @@ public class chestInteraction : MonoBehaviour
 
     }
 
-
-    void close()
+    IEnumerator closeChest()
     {
-        
         showedUp = false;
         chestPanel.SetActive(false);
+        actualChest.anim.SetTrigger("close");
+        yield return new WaitForSeconds(1.3f);      
         pC.movementAndLookEnabled = true;
         pC.mouseVisibleAndUnlocked = false;
         itemsUpdate();
         UI.screen = UiManager.onScreen.nothing;
         actualChest = null;
-
+        
     }
+
+   
 
 
     void itemsInChestClear()
@@ -158,19 +160,26 @@ public class chestInteraction : MonoBehaviour
 
     }
 
+    IEnumerator openChest(chest ch)
+    {
+        UI.screen = UiManager.onScreen.chest;
+        pC.movementAndLookEnabled = false;
+        pC.mouseVisibleAndUnlocked = true;
+        actualChest = ch;      
+        ch.anim.SetTrigger("open");
+        //play sound of opening chest
+        yield return new WaitForSeconds(1.3f);
+        chestPanel.SetActive(true);
+        showedUp = true;
+        itemsInChestClear();
+        assignItems();
+    }
 
     public void open(chest ch)
     {
         if (UI.screen == UiManager.onScreen.nothing)
         {
-            UI.screen = UiManager.onScreen.chest;
-            actualChest = ch;
-            showedUp = true;
-            chestPanel.SetActive(true);
-            pC.movementAndLookEnabled = false;
-            pC.mouseVisibleAndUnlocked = true;
-            itemsInChestClear();
-            assignItems();
+            StartCoroutine(openChest(ch));                 
         }
 
 
