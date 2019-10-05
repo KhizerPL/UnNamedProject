@@ -9,10 +9,11 @@ public class PlayerScript : MonoBehaviour
     #region publicVariables
 
     [Header("Player Basic Statistics: ")]
-    public int currentHealth;
-    public int currentHunger;
-    public int currentHydration;
+    public float currentHealth;
+    public float currentHunger;
+    public float currentHydration;
     public int cash;
+    public float playerHeat = 100;
 
     #endregion
 
@@ -28,29 +29,33 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] public GameObject itemPrefab;
 
+
+
+
+
     void needsUpdate()
     {
         if (currentHunger > 0)
         {         
-            currentHunger = currentHunger - Mathf.RoundToInt(hungerSpeed * Time.deltaTime);
+            currentHunger -= hungerSpeed * Time.deltaTime;
         }
         else
         {
-            currentHealth = currentHealth - Mathf.RoundToInt(hpLosingByHungerSpeed * Time.deltaTime);
+            currentHealth -= hpLosingByHungerSpeed * Time.deltaTime;
         }
        
         if(currentHydration > 0)
         {
-            currentHydration = currentHydration - Mathf.RoundToInt(hydrationSpeed * Time.deltaTime);
+            currentHydration -= hydrationSpeed * Time.deltaTime;
         }
         else
         {
-            currentHealth = currentHealth - Mathf.RoundToInt(hpLosingByHydrationSpeed * Time.deltaTime);
+            currentHealth -= hpLosingByHydrationSpeed * Time.deltaTime;
         }
 
-        hpText.text = currentHealth.ToString();
-        hungerText.text = currentHunger.ToString();
-        hydrationText.text = currentHydration.ToString();
+        hpText.text = Mathf.RoundToInt(currentHealth).ToString();
+        hungerText.text = Mathf.RoundToInt(currentHunger).ToString();
+        hydrationText.text = Mathf.RoundToInt(currentHydration).ToString();
 
 
     }
