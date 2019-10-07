@@ -100,6 +100,9 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
    
 
 
+    
+
+
     public void OnEndDrag(PointerEventData eventData)
     {       
         if (draggingItem)
@@ -115,6 +118,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
                     {
                         itemTransfer(inv.playerSlots[i]);
                         draggingItem = false;
+                        inv.hb.updateHotBar();
                         return;
                     }
                     else
@@ -133,6 +137,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
                             draggingItem = false;
                             return;
                         }
+
                         else
                         {
                             picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
@@ -146,9 +151,23 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
                     }
 
                 }
+                for (int i = 0; i < inv.hotBarSlots.Length;)
+                {
+                    if (inv.hotBarSlots[i].GetComponent<slot>().mouseOver && inv.hotBarSlots[i].GetComponent<slot>().empty && itemType == inv.hotBarSlots[i].GetComponent<slot>().slotType)
+                    {
+                        itemTransfer(inv.hotBarSlots[i]);
+                        inv.hb.updateHotBar();
+                        draggingItem = false;
+                        return;
+                    }
+                    i++;
+
+                }
+
                 if (!invmd.mouseOver)
                 {
                     dropItem();
+                    inv.hb.updateHotBar();
                 }
                 else
                 {

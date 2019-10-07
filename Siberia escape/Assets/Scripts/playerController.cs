@@ -8,7 +8,9 @@ public class playerController : MonoBehaviour
    public float sensitivity;
     public bool movementAndLookEnabled;
     public bool mouseVisibleAndUnlocked;
-   Rigidbody rb;
+
+    public bool isPlayerWalking;
+  
 
     float rotX = 0F;
     float rotY = 0f;
@@ -16,7 +18,7 @@ public class playerController : MonoBehaviour
 
     private void Start()
     {   
-        rb = GetComponent<Rigidbody>();
+       
     }
 
 
@@ -36,7 +38,18 @@ public class playerController : MonoBehaviour
         moveDirection.y = 0;
         transform.localPosition += (moveDirection * Time.deltaTime * speed);
 
-
+        if (horizontalInput != 0)
+        {
+            isPlayerWalking = true;
+        }
+        else if (verticalInput != 0)
+        {
+            isPlayerWalking = true;
+        }
+        else
+        {
+            isPlayerWalking = false;
+        }
         
 
 
@@ -79,7 +92,10 @@ public class playerController : MonoBehaviour
             movement();
             mouseLook();
         }
-
+        else
+        {
+            isPlayerWalking = false;
+        }
 
 
     }

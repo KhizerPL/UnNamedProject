@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class inventory : MonoBehaviour
 {
-         
 
+    public hotBar hb;
     [SerializeField] GameObject inventoryPanel;
     [SerializeField] Transform playerSlotsHandler;
     [SerializeField] Transform hotbarSlotsHandler;
@@ -37,6 +37,11 @@ public class inventory : MonoBehaviour
         for (int i = 0; i < equipableSlotsHandler.childCount; i++)
         {
             equipableSlots[i] = equipableSlotsHandler.GetChild(i).gameObject;
+        }
+        hotBarSlots = new GameObject[hotbarSlotsHandler.childCount];
+        for(int i = 0; i < hotbarSlotsHandler.childCount; i++)
+        {
+            hotBarSlots[i] = hotbarSlotsHandler.GetChild(i).gameObject;
         }
 
 
