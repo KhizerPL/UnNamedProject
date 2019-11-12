@@ -43,7 +43,16 @@ public class chestInteraction : MonoBehaviour
         chestSlots = new GameObject[chestSlotHandler.transform.childCount];
         playerSlots = new GameObject[playerSlotHandler.transform.childCount];
         assignSlots();
-        chestPanel.SetActive(false);
+
+        if(chestPanel.active)
+        {
+            chestPanel.SetActive(false);
+        }
+        else
+        {
+            chestPanel.SetActive(true);
+            chestPanel.SetActive(false);
+        }
 
 
     }

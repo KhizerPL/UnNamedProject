@@ -26,10 +26,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] Text hungerText;
     [SerializeField] Text hydrationText;
 
+    GameManager GM;
 
-    [SerializeField] public GameObject itemPrefab;
+    Transform npcPlayerIsTalkingTo;
 
 
+   
+    
 
 
 
@@ -60,20 +63,14 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        GM = GameObject.FindGameObjectWithTag("Global").GetComponent<GameManager>();
+    }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Instantiate(itemPrefab, new Vector3(transform.position.x, transform.position.y + 15, transform.position.z), Quaternion.identity);
-        }
-
         needsUpdate();
-
-        
-
-
-
     }
 
 

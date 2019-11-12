@@ -11,10 +11,11 @@ public class inventory : MonoBehaviour
     [SerializeField] Transform playerSlotsHandler;
     [SerializeField] Transform hotbarSlotsHandler;
     [SerializeField] Transform equipableSlotsHandler;
-    [SerializeField] playerController pC;
-    [SerializeField] Text itemNameOverlay;
+    public playerController pC;
+    public Text itemNameOverlay;
     [SerializeField] GameObject inventoryPopOut;
-    [SerializeField] UiManager UI;
+    public UiManager UI;
+    public crafting craft;
     public chestInteraction cI;
 
 
@@ -39,7 +40,7 @@ public class inventory : MonoBehaviour
             equipableSlots[i] = equipableSlotsHandler.GetChild(i).gameObject;
         }
         hotBarSlots = new GameObject[hotbarSlotsHandler.childCount];
-        for(int i = 0; i < hotbarSlotsHandler.childCount; i++)
+        for (int i = 0; i < hotbarSlotsHandler.childCount; i++)
         {
             hotBarSlots[i] = hotbarSlotsHandler.GetChild(i).gameObject;
         }
@@ -48,11 +49,35 @@ public class inventory : MonoBehaviour
 
     }
 
+   public Transform slotWithItem(int id)
+    {
+        for(int i = 0; i < playerSlots.Length;)
+        {
+            if(playerSlots[i].GetComponent<slot>().itemId == id)
+            {
+                return playerSlots[i].transform;
+            }
+            i++;
+        }
+        return null;
+    }
+
+        
+
 
     private void Start()
     {
         assignSlots();
-        inventoryPanel.SetActive(false);
+        if(inventoryPanel.active)
+        {
+            inventoryPanel.SetActive(false);
+        }
+        else
+        {
+            inventoryPanel.SetActive(true);
+            inventoryPanel.SetActive(false);
+        }
+
     }
 
 
@@ -73,7 +98,7 @@ public class inventory : MonoBehaviour
             pC.mouseVisibleAndUnlocked = false;
         }
     }
-    GameObject returnFreeSlot()
+   public GameObject returnFreeSlot()
     {
         for(int i = 0; i < playerSlots.Length;)
         {
@@ -88,9 +113,18 @@ public class inventory : MonoBehaviour
         }
         return null;    
     }
+
+
+    public void popOutSomething(string text, Color color)
+    {
+        inventoryPopOut.GetComponent<Animator>().SetTrigger("popOut");
+        inventoryPopOut.GetComponent<Text>().color = color;
+        inventoryPopOut.GetComponent<Text>().text = text;
+
+    }
+
     void popOutNotEnoughSpace()
     {
-
         inventoryPopOut.GetComponent<Animator>().SetTrigger("popOut");
         inventoryPopOut.GetComponent<Text>().color = new Color(1, 0, 0, 1);
         inventoryPopOut.GetComponent<Text>().text = "Not enough space";
@@ -105,7 +139,8 @@ public class inventory : MonoBehaviour
     }
 
 
-    void addItem(Transform item)
+
+   public void addItem(Transform item)
     {
         if(returnFreeSlot() != null)
         {
@@ -146,6 +181,18 @@ public class inventory : MonoBehaviour
                     if (UI.screen == UiManager.onScreen.nothing)
                     {
                         cI.open(hit.transform.GetComponent<chest>());
+                    }
+                }
+
+            }
+            else if (hit.transform.GetComponent<craftingTable>() && Vector3.Distance(this.transform.position, hit.transform.position) < 15)
+            {
+                itemNameOverlay.text = "Crafting Table";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (UI.screen == UiManager.onScreen.nothing)
+                    {
+                        hit.transform.GetComponent<craftingTable>().open();
                     }
                 }
 

@@ -33,6 +33,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
     public bool empty = true;
     public bool mouseOver;
     public string slotType;
+    public bool slotFreezed = false;
     
 
     #endregion
@@ -78,7 +79,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
 
     public void OnDrag(PointerEventData eventData)
     {
-      if(!empty)
+      if(!empty && !slotFreezed)
       {
          draggingItem = true;
          picOfItemHandler.transform.SetParent(transform.parent);
@@ -210,8 +211,48 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
                 draggingItem = false;
 
 
-            }
+            }           
+            else if(slotEnviroment == "craftingTable")
+            {
+                for (int i = 0; i < inv.craft.playerSlots.Length;)
+                {
+                    if (inv.craft.playerSlots[i].GetComponent<slot>().empty && inv.craft.playerSlots[i].GetComponent<slot>().mouseOver && !inv.craft.playerSlots[i].GetComponent<slot>().slotFreezed)
+                    {
+                        itemTransfer(inv.craft.playerSlots[i]);
+                        inv.craft.craftingSlotsUpdate();
+                        draggingItem = false;
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                    }
 
+                }
+
+                for (int i = 0; i < inv.craft.craftingSlots.Length;)
+                {
+                    if (inv.craft.craftingSlots[i].GetComponent<slot>().empty && inv.craft.craftingSlots[i].GetComponent<slot>().mouseOver && !inv.craft.craftingSlots[i].GetComponent<slot>().slotFreezed)
+                    {
+                        itemTransfer(inv.craft.craftingSlots[i]);
+                        inv.craft.craftingSlotsUpdate();
+                        draggingItem = false;
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+
+                }
+
+                picOfItemHandler.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+                draggingItem = false;
+
+
+
+
+            }
 
         }
 

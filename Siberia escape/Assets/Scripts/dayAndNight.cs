@@ -22,7 +22,7 @@ public class dayAndNight : MonoBehaviour
 
 
 
-   float gameSpeed = 1;
+    float gameSpeed = 1;
 
 
     private void Start()

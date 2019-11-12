@@ -11,7 +11,7 @@ public class onPlayerHand : MonoBehaviour
 
     public int choosenSlot = 0;
 
-   
+    bool allowSwing = true;
     
     
 
@@ -39,10 +39,51 @@ public class onPlayerHand : MonoBehaviour
 
 
     }
+    
+    IEnumerator pickaxeSwing()
+    {
+        armsAnimator.SetBool("mouseLeftClick", true);
+        allowSwing = false;
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Physics.Raycast(ray,out hit,10f))
+        {
+           if(hit.transform.GetComponent<entity>())
+            {
+                hit.transform.GetComponent<entity>().hp = hit.transform.GetComponent<entity>().hp - 10;
+            }
+
+        }
+        yield return new WaitForSeconds(1.042f);
+        allowSwing = true;
+        armsAnimator.SetBool("mouseLeftClick", false);
+    }
+
+
+    void itemUse()
+    {
+        if(bar.hotBarSlots[choosenSlot - 1].GetComponent<slot>().itemId == 3) //pickaxe usage
+        {
+            if (allowSwing)
+            {
+                StartCoroutine(pickaxeSwing());
+            }
+        }
+
+
+
+    }
 
 
     void checkInput()
     {
+        if(Input.GetMouseButton(0))
+        {
+            itemUse();
+        }
+
+
+
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             if(choosenSlot == 1)
