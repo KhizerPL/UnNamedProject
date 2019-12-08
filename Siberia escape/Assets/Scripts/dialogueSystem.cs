@@ -8,7 +8,7 @@ public class dialogueSystem : MonoBehaviour
     [SerializeField] Text dialogueTextBox;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] float pauseDuration;
-    public dialogues _dialogues;
+    public dialogues _dialogues;//AsPrus: zamień public na [SerializeField], a w definicji klasy dodaj [System.Serializable]
     GameManager GM;
     bool isTalking;
     public int placeInDialogue;
@@ -35,7 +35,7 @@ public class dialogueSystem : MonoBehaviour
    
     public void startConversation(npc _npc)
     {
-        _dialogues = _npc._dialogues;
+        //_dialogues = _npc._dialogues; //AsPrus: error here
         isTalking = true;
         dialogueBox.SetActive(true);
         placeInDialogue = 0;
@@ -94,7 +94,7 @@ public class dialogueSystem : MonoBehaviour
 
     void Start()
     {
-        GM = GameObject.FindGameObjectWithTag("Global").GetComponent<GameManager>();
+        GM = GameObject.FindGameObjectWithTag("Global").GetComponent<GameManager>();//AsPrus: takie rozwiązania są baaardzo nieoptymalne: FindGameObjectWithTag przechodzi przez wszystkie GameObjecty na scenie, a do tego GetComponent też zajmuje strasznie dużo czasu procesorowi. Najlepiej mieć statyczny obiekt w GameManagerze wskazujący na obiekt na scenie (więcej w GameManager.cs)
     }
 
 }
