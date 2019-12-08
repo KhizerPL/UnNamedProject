@@ -27,7 +27,14 @@ public class raycasts : MonoBehaviour
                 }
              
             }
+            else if (hit.transform.GetComponent<ladder>())
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    hit.transform.GetComponent<ladder>().goOnLadder();
+                }
 
+            }
 
 
 

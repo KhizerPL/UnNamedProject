@@ -50,7 +50,8 @@ public class npcInteraction : MonoBehaviour
         StartCoroutine(smoothLookAt(new Vector3(npc.transform.position.x, npc.transform.position.y + npc.GetComponent<npc>().height, npc.transform.position.z), 2f));
         //  StartCoroutine(npc.GetComponent<npc>().smoothLookAt(transform.position, 1.5f));
         yield return new WaitForSeconds(2.5f);
-        GM._UiManager.showNPCpanel();
+        GM._dialogueSystem.startConversation(npc.GetComponent<npc>());
+        
 
     }
     

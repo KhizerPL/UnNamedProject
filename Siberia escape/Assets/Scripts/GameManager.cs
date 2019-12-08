@@ -11,5 +11,7 @@ public class GameManager : MonoBehaviour
     public tradeWithNPC _NPCtradeSystem;
     public itemsManager _itemsManager;
     public npcInteraction _npcInteraction;
+    public dialogueSystem _dialogueSystem;
+    
 
 }

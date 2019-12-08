@@ -6,6 +6,7 @@ public class npc : MonoBehaviour
 {
 
     [SerializeField] string name;
+    public dialogues _dialogues;
     public bool isAbleToTrade;
     public int  firstItemToTrade;
     public int  secondItemToTrade;

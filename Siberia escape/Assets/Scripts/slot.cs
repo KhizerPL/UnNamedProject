@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IEndDragHandler
+public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     #region privateVariables
   
@@ -12,6 +12,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
     inventory inv;
   
     public GameObject picOfItemHandler;
+    GameManager GM;
     GameObject player;
     #endregion
 
@@ -43,6 +44,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
         picOfItemHandler = transform.GetChild(0).gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         inv = player.GetComponent<inventory>();
+        GM = GameObject.FindGameObjectWithTag("Global").GetComponent<GameManager>();
     }
 
     public void addItemToSlot(Sprite _itemIcon, int id, string type)
@@ -75,7 +77,15 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ID
        
     }
     
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(!empty)
+        {
+            GM._itemsManager.itemUse(itemId,this);
+        }
 
+    }
+    
 
     public void OnDrag(PointerEventData eventData)
     {

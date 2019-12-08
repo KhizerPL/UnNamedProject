@@ -8,17 +8,18 @@ public class playerController : MonoBehaviour
    public float sensitivity;
     public bool movementAndLookEnabled;
     public bool mouseVisibleAndUnlocked;
-
+    public bool useGravity;
     public bool isPlayerWalking;
   
 
     float rotX = 0F;
     float rotY = 0f;
 
+    Rigidbody rb;
 
     private void Start()
-    {   
-       
+    {
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -97,6 +98,15 @@ public class playerController : MonoBehaviour
             isPlayerWalking = false;
         }
 
+        if(useGravity)
+        {
+            rb.useGravity = true;
+
+        }
+        else if(!useGravity)
+        {
+            rb.useGravity = false;
+        }
 
     }
 

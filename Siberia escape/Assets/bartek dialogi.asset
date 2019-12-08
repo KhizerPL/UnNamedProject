@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372fd11e4cef27541889dd71c50ea7ba, type: 3}
+  m_Name: bartek dialogi
+  m_EditorClassIdentifier: 
+  sentences:
+  - "BIOS (akronim ang. Basic Input/Output System \u2013 podstawowy system wej\u015Bcia-wyj\u015Bcia)"
+  - "Jest to program zapisany w pami\u0119ci ROM p\u0142yty g\u0142\xF3wnej oraz innych
+    kart rozszerze\u0144 takich, jak np. karta graficzna"
+  - "Od po\u0142owy lat 90. XX w. wi\u0119kszo\u015Bci BIOS-\xF3w umieszcza si\u0119
+    w pami\u0119ciach typu flash, co umo\u017Cliwia ich p\xF3\u017Aniejsz\u0105 aktualizacj\u0119."
